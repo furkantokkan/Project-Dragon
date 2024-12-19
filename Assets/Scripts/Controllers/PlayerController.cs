@@ -5,6 +5,7 @@ using RPG.Resources;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,13 +14,6 @@ namespace RPG.Control
     [RequireComponent(typeof(FightHandler))]
     public class PlayerController : MonoBehaviour
     {
-        enum CursorType
-        {
-            None,
-            Movement,
-            Combat,
-            UI
-        }
         private FightHandler fightHandler;
 
         private Health health;
@@ -50,7 +44,7 @@ namespace RPG.Control
                 SetCursor(CursorType.None);
                 return;
             }
-            if (InteractWithCombat()) return;
+            if (InteractWithComponent()) return;
             if (InteractWithMovement()) return;
             SetCursor(CursorType.None);
         }
@@ -67,27 +61,20 @@ namespace RPG.Control
 
             return false;
         }
-
-        public bool InteractWithCombat()
+        private bool InteractWithComponent()
         {
             RaycastHit[] hits = Physics.RaycastAll(DoRaycast());
             foreach (RaycastHit hit in hits)
             {
-                CombatTargetHandler target = hit.transform.GetComponent<CombatTargetHandler>();
-                if (target == null)
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
+                foreach (IRaycastable raycastable in raycastables)
                 {
-                    continue;
+                    if (raycastable.HandleRaycast(this))
+                    {
+                        SetCursor(raycastable.GetCursorType());
+                        return true;
+                    }
                 }
-                if (!fightHandler.CanAttack(target.gameObject))
-                {
-                    continue;
-                }
-                if (Input.GetMouseButton(1))
-                {
-                    fightHandler.Attack(target.gameObject);
-                }
-                SetCursor(CursorType.Combat);
-                return true;
             }
             return false;
         }
@@ -101,7 +88,7 @@ namespace RPG.Control
                 {
                     if (hasHit)
                     {
-                        GetComponent<MoveHandler>().StartMoveAction(hit.point, 1f ); //max speed
+                        GetComponent<MoveHandler>().StartMoveAction(hit.point, 1f); //max speed
                     }
                 }
                 SetCursor(CursorType.Movement);

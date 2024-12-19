@@ -30,7 +30,7 @@ namespace RPG.Movement
             UpdateAnimator();
             if (newTarget.magnitude > 0 && TryGetComponent<PlayerController>(out PlayerController controller))
             {
-                if (Vector3.Distance(transform.position, newTarget) < 0.1f && !controller.InteractWithCombat())
+                if (Vector3.Distance(transform.position, newTarget) < 0.1f)
                 {
                     Cancel();
                 }
