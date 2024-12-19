@@ -1,40 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3461175335503397123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8787227088715218997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9527700c113ec734297889190862dde1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  experiencePoints: 0
---- !u!114 &3728687825649614029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8787227088715218997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fd328c09459f56439f7b7468e43aa37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorMappings:
-  - type: 0
-    texture: {fileID: 2800000, guid: 21628736160fcc9488493401da3ef621, type: 3}
-    hotspot: {x: 0, y: 0}
-  - type: 1
-    texture: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
-    hotspot: {x: 0, y: 0}
-  - type: 2
-    texture: {fileID: 2800000, guid: 2d18e23e3ce249b4489b8bcdd02d3f48, type: 3}
-    hotspot: {x: 0, y: 0}
 --- !u!1001 &333710998883720292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,3 +213,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1432399649826781349}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-3461175335503397123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787227088715218997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9527700c113ec734297889190862dde1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0
+--- !u!114 &3728687825649614029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787227088715218997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd328c09459f56439f7b7468e43aa37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorMappings:
+  - type: 0
+    texture: {fileID: 2800000, guid: 21628736160fcc9488493401da3ef621, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 1
+    texture: {fileID: 2800000, guid: 1e1ecf843f705b34ab304dff88b037c1, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 2
+    texture: {fileID: 2800000, guid: 2d18e23e3ce249b4489b8bcdd02d3f48, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 3
+    texture: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
+    hotspot: {x: 0, y: 0}

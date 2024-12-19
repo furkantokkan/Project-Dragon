@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RPG.Control
 {
@@ -16,7 +17,8 @@ namespace RPG.Control
         {
             None,
             Movement,
-            Combat
+            Combat,
+            UI
         }
         private FightHandler fightHandler;
 
@@ -41,24 +43,31 @@ namespace RPG.Control
         }
         void Update()
         {
-            if (isInTrnasation)
-            {
-                return;
-            }
+            if (isInTrnasation) return;
+            if (InteractWithUI()) return;
             if (!health.IsAlive())
-            { 
-                return; 
-            }
-            if (InteractWithCombat()) //click for combat
             {
+                SetCursor(CursorType.None);
                 return;
             }
-            if (InteractWithMovement()) //click for movement
-            {
-                return;
-            }
+            if (InteractWithCombat()) return;
+            if (InteractWithMovement()) return;
             SetCursor(CursorType.None);
         }
+
+        private bool InteractWithUI()
+        {
+            if (EventSystem.current == null) return false;
+
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
+                return true;
+            }
+
+            return false;
+        }
+
         public bool InteractWithCombat()
         {
             RaycastHit[] hits = Physics.RaycastAll(DoRaycast());
